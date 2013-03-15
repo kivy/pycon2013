@@ -301,7 +301,7 @@ slides > slide.dark {
 /* line 171, ../scss/default.scss */
 slides > slide:not(.nobackground):before {
   font-size: 12pt;
-  content: "#yourhashtag";
+  content: "#kivy";
   position: absolute;
   bottom: 20px;
   left: 60px;

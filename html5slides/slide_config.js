@@ -31,7 +31,7 @@ var SLIDE_CONFIG = {
     company: 'Melting Rocks',
     gplus: 'http://plus.google.com/105862019548406441587',
     twitter: '@mathieuvirbel',
-    www: 'http://www.,eltingrocks.com',
+    www: 'http://www.meltingrocks.com',
     github: 'http://github.com/tito'
   }]
 };
