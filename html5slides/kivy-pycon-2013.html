@@ -76,15 +76,69 @@
 
 	<slide>
 		<hgroup>
-			<h2>Building for mobile</h2>
+			<h2>Building for mobile: toolchain</h2>
 		</hgroup>
 		<article>
-		<p>Cross compilation is hard to get it right.<p>
+		<p>We provide toolchain to compile app for Android and iOS</p>
+		<p><b>Python-for-android</b></p>
 		<ul>
-			<li>Android: python-for-android toolchain</li>
-			<li>iOS: kivy-ios toolchain</li>
+			<li>Cross compilation toolchain for ARM/Android</li>
+			<li>Python, SDL, pygame, and many others libraries are shipped</li>
+			<li>One tool for packaging into APK</li>
+			<li>! Our project is at <a href="http://github.com/kivy/python-for-android/">http://github.com/kivy/python-for-android/</a></li>
 		</ul>
-		<p>Note: we are not related to p4a, another project named also "python-for-android".</p>
+		<p><b>Kivy iOS</b></p>
+		<ul>
+			<li>Cross compilation toolchain for ARM/iOS</li>
+			<li>Not modular, few libraries are available</li>
+			<li><span class="green">Goal</span>: redo it with the same architecture as Python for Android</li>
+		</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Building for mobile: buildozer</h2>
+		</hgroup>
+		<article>
+			<p><b>Buildozer</b></p>
+			<ul>
+				<li>One definition file called "buildozer.spec"</li>
+				<li>Create application packages for Android and iOS</li>
+			</ul>
+			<pre class="prettyprint" data-lang="shell">
+$ buildozer init
+$ vim buildozer.spec
+$ buildozer android debug deploy run</pre>
+			<ul>
+				<li>It hide the complexity of packaging</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Building for mobile: buildozer</h2>
+		</hgroup>
+		<article class="small">
+			<pre class="prettyprint" data-lang="spec">
+[app]
+title = Logotouch
+package.name = logotouch
+package.domain = org.erasme
+source.dir = .
+source.include_exts = ini,py,png,jpg,ttf,kv,mo,atlas
+version.regex = __version__ = '(.*)'
+version.filename = %(source.dir)s/main.py
+requirements = pika,kivy
+presplash.filename = %(source.dir)s/data/presplash.png
+icon.filename = %(source.dir)s/data/icon.png
+
+# android specific
+android.permissions = INTERNET
+
+# ios specific
+ios.codesign.debug = "iPhone Developer: Mathieu Virbel (PSW92G0TX8)"</pre>
 		</article>
 	</slide>
 
@@ -104,14 +158,19 @@
 
 	<slide>
 		<hgroup>
-			<h2>Accessing mobile API: PyJNIus</h2>
+			<h2>Accessing mobile API</h2>
 		</hgroup>
 		<article>
+			<p><b>PyJNIus - Access Java classes from Python</b></p>
 			<ul>
-				<li>Access to Java class from Python</li>
 				<li>Works on Desktop and Android</li>
-				<li>It use JNI internally, and Java reflection</li>
-				<li>Everything is dynamic</li>
+				<li>It use JNI / Java reflection</li>
+			</ul>
+			<br/>
+			<p><b>PyOBJus - Access Objective-C from Python</b></p>
+			<ul>
+				<li>It use Objective C reflection</li>
+				<li>(Still in progress, doesn't works)</li>
 			</ul>
 		</article>
 	</slide>
@@ -133,8 +192,7 @@ TextToSpeech = autoclass('android.speech.tts.TextToSpeech')
 
 tts = TextToSpeech(PythonActivity.mActivity, None)
 tts.setLanguage(Locale.US)
-tts.speak('Hello World.', TextToSpeech.QUEUE_FLUSH, None)
-			</pre>
+tts.speak('Hello World.', TextToSpeech.QUEUE_FLUSH, None)</pre>
 		</article>
 	</slide>
 
@@ -164,8 +222,7 @@ locationManager = PythonActivity.mActivity.getSystemService(
 locationManager.requestLocationUpdates(
 		LocationManager.GPS_PROVIDER, 10000, 10,
 		GpsListener())
-</b>
-			</pre>
+</b></pre>
 		</article>
 	</slide>
 
