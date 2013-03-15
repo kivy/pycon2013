@@ -1,15 +1,16 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: 'Title Goes Here<br>Up To Two Lines',
-    subtitle: 'Subtitle Goes Here',
-    //eventTitle: 'Google I/O 2013',
+    title: 'Kivy',
+  
+    subtitle: 'Kivy: Building GUI and Mobile apps with Python',
+    eventTitle: 'pycon 2013',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
     enableTouch: true, // Default: true. If touch support should enabled. Note: the device must support touch.
     //analytics: 'UA-XXXXXXXX-1', // TODO: Using this breaks GA for some reason (probably requirejs). Update your tracking code in template.html instead.
-    favIcon: 'images/google_developers_logo_tiny.png',
+    favIcon: 'images/kivy-logo-small.png',
     fonts: [
       'Open Sans:regular,semibold,italic,italicsemibold',
       'Source Code Pro'
@@ -19,19 +20,19 @@ var SLIDE_CONFIG = {
 
   // Author information
   presenters: [{
-    name: 'Firstname Lastname',
-    company: 'Job Title, Google',
-    gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
-  }/*, {
-    name: 'Second Name',
-    company: 'Job Title, Google',
-    gplus: 'http://plus.google.com/1234567890',
-    twitter: '@yourhandle',
-    www: 'http://www.you.com',
-    github: 'http://github.com/you'
-  }*/]
+    name: 'Thomas Hansen',
+    company: 'fresk',
+    gplus: 'plus.google.com/116222302681747543460',
+    twitter: '@hansent',
+    www: 'http://www.fresklabs.com',
+    github: 'http://github.com/hansent'
+  }, {
+    name: 'Mathieu Virbel',
+    company: 'Melting Rocks',
+    gplus: 'http://plus.google.com/105862019548406441587',
+    twitter: '@mathieuvirbel',
+    www: 'http://www.,eltingrocks.com',
+    github: 'http://github.com/tito'
+  }]
 };
 
