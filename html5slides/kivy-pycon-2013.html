@@ -69,11 +69,106 @@
 		<ul>
 			<li>API renamed and stabilized</li>
 			<li>New graphics pipeline, compatible GLES2</li>
-			<li>Android</li>
-			<li>iOS support early 2011</li>
+			<li>Android and iOS added during 2011</li>
 		</ul>
 		</article>
   </slide>
+
+	<slide>
+		<hgroup>
+			<h2>Building for mobile</h2>
+		</hgroup>
+		<article>
+		<p>Cross compilation is hard to get it right.<p>
+		<ul>
+			<li>Android: python-for-android toolchain</li>
+			<li>iOS: kivy-ios toolchain</li>
+		</ul>
+		<p>Note: we are not related to p4a, another project named also "python-for-android".</p>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Accessing mobile API</h2>
+		</hgroup>
+		<article>
+		<p>Mobile have Accelerometer, Camera, Compas, Contacts, Geolocation (GPS, Wifi), Notification etc.</p>
+		<p>We don't provide abstraction for it (yet).</p>
+
+		<div class="centered" style="marging-top: 2em">
+			<b>What if we could access to anything in Java from Python ?</b>
+		</div>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Accessing mobile API: PyJNIus</h2>
+		</hgroup>
+		<article>
+			<ul>
+				<li>Access to Java class from Python</li>
+				<li>Works on Desktop and Android</li>
+				<li>It use JNI internally, and Java reflection</li>
+				<li>Everything is dynamic</li>
+			</ul>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Accessing mobile API: PyJNIus</h2>
+		</hgroup>
+		<article>
+			<p>
+				Using Text-To-Speech: Make your phone say "Hello World"
+			</p>
+			<pre class="prettyprint" data-lang="python">
+from jnius import autoclass
+
+Locale = autoclass('java.util.Locale')
+PythonActivity = autoclass('org.renpy.android.PythonActivity')
+TextToSpeech = autoclass('android.speech.tts.TextToSpeech')
+
+tts = TextToSpeech(PythonActivity.mActivity, None)
+tts.setLanguage(Locale.US)
+tts.speak('Hello World.', TextToSpeech.QUEUE_FLUSH, None)
+			</pre>
+		</article>
+	</slide>
+
+	<slide>
+		<hgroup>
+			<h2>Accessing mobile API: PyJNIus</h2>
+		</hgroup>
+		<article class="smaller">
+		<p>One step further: implement Java class in Python! (wip).</p>
+		<pre class="prettyprint" data-lang="python">
+<b>
+class GpsListener(PythonJavaClass):
+    __javainterfaces__ = ['android/location/LocationListener']
+
+    @java_method('(Landroid/location/Location;)')
+    def onLocationChanged(self, location):
+        print 'lat', location.getLatitude()
+        print 'lon', location.getLongitude()
+</b>
+
+LocationManager = autoclass('android.location.LocationManager')
+PythonActivity = autoclass('org.renpy.android.PythonActivity')
+Context = autoclass('android.content.Context')
+<b>
+locationManager = PythonActivity.mActivity.getSystemService(
+		Context.LOCATION_SERVICE)
+locationManager.requestLocationUpdates(
+		LocationManager.GPS_PROVIDER, 10000, 10,
+		GpsListener())
+</b>
+			</pre>
+		</article>
+	</slide>
+
 
   <slide class="backdrop"></slide>
 
