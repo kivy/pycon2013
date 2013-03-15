@@ -40,8 +40,8 @@
 			<h2>Show & Tell</h2>
 		</hgroup>
     <article>
-      <h1>VIDEO</h1>
-		</article>
+	<p>Video !</p>
+	</article>
   </slide>
 
   <slide>
@@ -211,9 +211,10 @@
 			<ul>
 				<li>7 core developers</li>
 				<li>13 public projects</li>
-				<li>2 mailing lists, around 760 users</li>
+				<li>2 mailing lists (kivy-users, kivy-dev), ~ 760 users</li>
 				<li>IRC channel #kivy</li>
 			</ul>
+			<h3>All the projects are available at <a href="http://github.com/kivy/">github.com/kivy</a></h3>
 		</article>
   </slide>
 
@@ -222,20 +223,25 @@
 			<h2>History</h2>
 		</hgroup>
 		<article>
+		<div class="build">
+		<div>
 		<p><b>PyMT</b></p>
 		<ul>
 			<li>Created in 2007</li>
 			<li>Mainly focused for NUI on custom hardware</li>
 			<li>Place for experimentation</li>
-			<li>No way to run it on mobile.</li>
+			<li>Direct GL API, no way to run it on mobile.</li>
 		</ul>
+		</div><div>
 		<p><b>Kivy</b></p>
 		<ul>
 			<li>born in 2010</li>
 			<li>API renamed and stabilized</li>
-			<li>New graphics pipeline, compatible GLES2</li>
+			<li>New graphics pipeline, built on OpenGL ES 2</li>
 			<li>Android and iOS added during 2011</li>
 		</ul>
+		</div>
+		</div>
 		</article>
   </slide>
 
@@ -246,19 +252,25 @@
 		</hgroup>
 		<article>
 		<p>We provide toolchain to compile app for Android and iOS</p>
-		<p><b>Python-for-android</b></p>
-		<ul>
-			<li>Cross compilation toolchain for ARM/Android</li>
-			<li>Python, SDL, pygame, and many others libraries are shipped</li>
-			<li>One tool for packaging into APK</li>
-			<li>! Our project is at <a href="http://github.com/kivy/python-for-android/">http://github.com/kivy/python-for-android/</a></li>
-		</ul>
-		<p><b>Kivy iOS</b></p>
-		<ul>
-			<li>Cross compilation toolchain for ARM/iOS</li>
-			<li>Not modular, few libraries are available</li>
-			<li><span class="green">Goal</span>: redo it with the same architecture as Python for Android</li>
-		</ul>
+		<div class="build">
+			<div>
+				<p><b>Python-for-android</b></p>
+				<ul>
+					<li>Cross compilation toolchain for ARM/Android</li>
+					<li>Python, SDL, pygame, and many others libraries are shipped</li>
+					<li>One tool for packaging into APK</li>
+					<li>! Our project is at <a href="http://github.com/kivy/python-for-android/">http://github.com/kivy/python-for-android/</a></li>
+				</ul>
+			</div>
+			<div>
+				<p><b>Kivy iOS</b></p>
+				<ul>
+					<li>Cross compilation toolchain for ARM/iOS</li>
+					<li>Not modular, few libraries are available</li>
+					<li><span class="green">Goal</span>: redo it with the same architecture as Python for Android</li>
+				</ul>
+			</div>
+		</div>
 		</article>
 	</slide>
 
