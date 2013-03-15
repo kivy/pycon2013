@@ -1,2 +1,2 @@
 cd html5slides
-./serve.sh
+./serve.sh &> /dev/null
