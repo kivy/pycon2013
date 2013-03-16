@@ -1284,11 +1284,6 @@ aside.gdbar {
   -moz-background-size: 0% 100%;
   -o-background-size: 0% 100%;
   background-size: 0% 100%;
-  -webkit-transition: all 0.5s ease-out;
-  -webkit-transition-delay: 0.5s;
-  -moz-transition: all 0.5s ease-out 0.5s;
-  -o-transition: all 0.5s ease-out 0.5s;
-  transition: all 0.5s ease-out 0.5s;
   /* Better to transition only on background-size, but not sure how to do that with the mixin. */
 }
 /* line 895, ../scss/default.scss */
@@ -1411,8 +1406,15 @@ aside.gdbar img {
 }
 
 @media print {
+
+@page {
+	margin: 0;
+}
+
   /* line 1014, ../scss/default.scss */
   slides slide {
+-webkit-print-color-adjust:exact;
+	  
     display: block !important;
     position: relative;
     background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(85%, #ffffff), color-stop(100%, #e6e6e6));
