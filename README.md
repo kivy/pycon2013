@@ -1,4 +1,6 @@
-pycon2013
-=========
+Kivy Pycon 2013
+===============
 
-pycon 2013 kivy presentation
+Pycon 2013 kivy presentation
+
+Slides available at: https://speakerdeck.com/pyconslides/kivy-building-gui-and-mobile-apps-with-python
